@@ -2,21 +2,36 @@
 <html>
 <head>
 <title>For You ❤️</title>
-
 <style>
 body {
     margin: 0;
     text-align: center;
-    font-family: Arial;
-    background: linear-gradient(to right, #ff758c, #ff7eb3);
+    font-family: 'Arial', sans-serif;
+    background: linear-gradient(to right, #ff9a9e, #fad0c4);
     color: white;
+    overflow: hidden;
+    position: relative;
 }
 
-/* Smooth animation */
+/* Cute floating decorations */
+.decoration {
+    position: fixed;
+    font-size: 20px;
+    opacity: 0.6;
+    animation: floatUp 8s linear infinite;
+    z-index: -1;
+    pointer-events: none;
+}
+
+@keyframes floatUp {
+    0% { transform: translateY(100vh) rotate(0deg); }
+    100% { transform: translateY(-100px) rotate(360deg); }
+}
+
+/* Smooth fade */
 .fade {
     animation: fadeIn 1s;
 }
-
 @keyframes fadeIn {
     from {opacity: 0;}
     to {opacity: 1;}
@@ -27,138 +42,196 @@ button {
     margin: 10px;
     border: none;
     background: white;
-    color: black;
-    border-radius: 20px;
+    color: #ff69b4;
+    border-radius: 25px;
     font-size: 16px;
     cursor: pointer;
+    font-weight: bold;
 }
 
-/* Hearts animation */
-.heart {
-    position: fixed;
-    bottom: 0;
-    color: red;
-    animation: floatUp 5s linear infinite;
+h2 {
+    font-size: 28px;
 }
 
-@keyframes floatUp {
-    0% {transform: translateY(0);}
-    100% {transform: translateY(-800px);}
+/* Big bold love text */
+.big-love {
+    font-size: 32px;
+    font-weight: bold;
+    font-family: 'Georgia', serif;
+    text-shadow: 2px 2px 8px rgba(0,0,0,0.3);
+    margin: 20px 0;
 }
 
-.hidden {
+/* Slideshow */
+.slideshow-container {
+    max-width: 300px;
+    margin: 20px auto;
+    position: relative;
+}
+.mySlides {
     display: none;
+    width: 100%;
+    border-radius: 15px;
+}
+.slide-text {
+    position: absolute;
+    bottom: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: rgba(0,0,0,0.5);
+    padding: 8px 15px;
+    border-radius: 20px;
+    font-size: 14px;
+}
+
+/* Typing effect */
+#typing {
+    font-size: 20px;
+    min-height: 120px;
+    margin: 20px auto;
+    max-width: 280px;
+    white-space: pre-wrap;
 }
 </style>
 </head>
 
 <body>
 
+<!-- Floating cute decorations -->
+<div id="decorations"></div>
+
 <!-- STEP 1 -->
 <div id="step1" class="fade">
-<h2>Put your name 💌</h2>
-<p>Hint: The name I call you daily ❤️</p>
-<input type="text" id="nameInput">
-<br><br>
-<button onclick="checkName()">Next</button>
-<p id="error"></p>
+    <h2>Put your name 💌</h2>
+    <p>Hint: The name I call you daily ❤️</p>
+    <input type="text" id="nameInput" style="padding:10px; font-size:16px;">
+    <br><br>
+    <button onclick="checkName()">Next</button>
+    <p id="error" style="color:yellow;"></p>
 </div>
 
 <!-- STEP 2 -->
 <div id="step2" class="hidden fade">
-<h2>Do you love me? ❤️</h2>
-<button onclick="yes()">YES</button>
-<button onclick="no()">NO</button>
+    <h2>Do you love me? ❤️</h2>
+    <button onclick="yes()">YES</button>
+    <button id="noBtn">NO</button>
 </div>
 
 <!-- STEP 3 -->
 <div id="step3" class="hidden fade">
-<h2>Select your gift 🎁</h2>
-<button onclick="gift1()">GIFT 1</button>
-<button onclick="gift2()">GIFT 2</button>
+    <h2>Select your gift 🎁</h2>
+    <button onclick="gift1()">GIFT 1</button>
+    <button onclick="gift2()">GIFT 2</button>
+    <button onclick="gift3()">GIFT 3</button>
 </div>
 
-<!-- GIFT 1 -->
+<!-- GIFT 1 - Slideshow -->
 <div id="gift1" class="hidden fade">
-<h2>❤️ Our Memories ❤️</h2>
+    <h2>❤️ Our Memories ❤️</h2>
+    
+    <div class="slideshow-container">
+        <div class="mySlides"><img src="https://via.placeholder.com/280x200/ffc0cb/ffffff?text=Photo+1" style="width:100%"></div>
+        <div class="mySlides"><img src="https://via.placeholder.com/280x200/ffc0cb/ffffff?text=Photo+2" style="width:100%"></div>
+        <div class="mySlides"><img src="https://via.placeholder.com/280x200/ffc0cb/ffffff?text=Photo+3" style="width:100%"></div>
+        <div class="slide-text">Forever with you 💕</div>
+    </div>
 
-<img src="https://via.placeholder.com/200"><br><br>
-<img src="https://via.placeholder.com/200"><br>
-
-<p>I Love You Forever 💖</p>
-
-<button onclick="back()">Back</button>
+    <p class="big-love">I Love You Forever 💖</p>
+    <button onclick="back()">Back</button>
 </div>
 
-<!-- GIFT 2 -->
+<!-- GIFT 2 - Song -->
 <div id="gift2" class="hidden fade">
-<h2>🎵 Special Song 🎵</h2>
+    <h2>🎵 Special Song 🎵</h2>
+    <iframe width="300" height="200" 
+    src="https://www.youtube.com/embed/2Vv-BfVoq4g" 
+    allowfullscreen></iframe>
+    <br>
+    <button onclick="back()">Back</button>
+</div>
 
-<iframe width="300" height="200"
-src="https://www.youtube.com/embed/2Vv-BfVoq4g"
-allowfullscreen></iframe>
-
-<br>
-<button onclick="back()">Back</button>
+<!-- GIFT 3 - Typing Message -->
+<div id="gift3" class="hidden fade">
+    <h2>💌 A Letter For You 💌</h2>
+    <div id="typing"></div>
+    <p class="big-love">I Love You Forever 💖</p>
+    <button onclick="back()">Back</button>
 </div>
 
 <script>
+// === BACKGROUND MUSIC (Auto play - soft romantic) ===
+var bgMusic = new Audio("https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3"); // Change this link if you want
+bgMusic.loop = true;
+bgMusic.volume = 0.3;
+bgMusic.play().catch(() => {}); // Autoplay may need user interaction on some browsers
 
-// NAME CHECK
+// === Floating Hello Kitty & Bows ===
+function createDecorations() {
+    const decors = ['🎀', '🐱', '🎀', '💕', '🐱', '🎀'];
+    setInterval(() => {
+        let decor = document.createElement("div");
+        decor.className = "decoration";
+        decor.innerHTML = decors[Math.floor(Math.random()*decors.length)];
+        decor.style.left = Math.random() * 100 + "vw";
+        decor.style.animationDuration = (Math.random() * 6 + 7) + "s";
+        document.getElementById("decorations").appendChild(decor);
+        
+        setTimeout(() => decor.remove(), 15000);
+    }, 400);
+}
+createDecorations();
+
+// === Name Check ===
 function checkName() {
-let name = document.getElementById("nameInput").value.toLowerCase();
-
-if(name === "baacha") {
-document.getElementById("step1").style.display = "none";
-document.getElementById("step2").style.display = "block";
-} else {
-document.getElementById("error").innerText = "Not Accepted 😢";
+    let name = document.getElementById("nameInput").value.toLowerCase().trim();
+    if(name === "baacha") {
+        document.getElementById("step1").style.display = "none";
+        document.getElementById("step2").style.display = "block";
+    } else {
+        document.getElementById("error").innerText = "Not Accepted 😢 Try again 💕";
+    }
 }
-}
 
-// YES / NO
+// === YES / NO (NO runs away) ===
 function yes() {
-document.getElementById("step2").style.display = "none";
-document.getElementById("step3").style.display = "block";
+    document.getElementById("step2").style.display = "none";
+    document.getElementById("step3").style.display = "block";
 }
 
-function no() {
-alert("NO is not an option 😏❤️");
-}
+const noBtn = document.getElementById("noBtn");
+noBtn.addEventListener("mouseover", () => {
+    noBtn.style.position = "absolute";
+    noBtn.style.left = Math.random() * 80 + "%";
+    noBtn.style.top = Math.random() * 70 + "%";
+});
 
-// GIFTS
+// === Gifts ===
 function gift1() {
-document.getElementById("step3").style.display = "none";
-document.getElementById("gift1").style.display = "block";
-startHearts();
+    document.getElementById("step3").style.display = "none";
+    document.getElementById("gift1").style.display = "block";
+    startSlideshow();
 }
 
 function gift2() {
-document.getElementById("step3").style.display = "none";
-document.getElementById("gift2").style.display = "block";
+    document.getElementById("step3").style.display = "none";
+    document.getElementById("gift2").style.display = "block";
 }
 
-// BACK
+function gift3() {
+    document.getElementById("step3").style.display = "none";
+    document.getElementById("gift3").style.display = "block";
+    startTyping();
+}
+
 function back() {
-document.getElementById("gift1").style.display = "none";
-document.getElementById("gift2").style.display = "none";
-document.getElementById("step3").style.display = "block";
+    document.getElementById("gift1").style.display = "none";
+    document.getElementById("gift2").style.display = "none";
+    document.getElementById("gift3").style.display = "none";
+    document.getElementById("step3").style.display = "block";
 }
 
-// HEART ANIMATION
-function startHearts() {
-setInterval(() => {
-let heart = document.createElement("div");
-heart.innerHTML = "❤️";
-heart.className = "heart";
-heart.style.left = Math.random() * 100 + "vw";
-document.body.appendChild(heart);
-
-setTimeout(() => heart.remove(), 5000);
-}, 300);
-}
-
-</script>
-
-</body>
-</html>
+// === Slideshow Animation ===
+let slideIndex = 0;
+function startSlideshow() {
+    let slides = document.getElementsByClassName("mySlides");
+    for (

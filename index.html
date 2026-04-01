@@ -70,6 +70,7 @@ h2 {
     position: relative;
     border-radius: 15px;
     overflow: hidden;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.2);
 }
 .mySlides {
     display: none;
@@ -80,7 +81,7 @@ h2 {
     bottom: 15px;
     left: 50%;
     transform: translateX(-50%);
-    background: rgba(255,105,180,0.7);
+    background: rgba(255,105,180,0.8);
     padding: 8px 18px;
     border-radius: 20px;
     font-size: 15px;
@@ -135,10 +136,10 @@ h2 {
     <h2>❤️ Our Beautiful Memories ❤️</h2>
     
     <div class="slideshow-container">
-        <div class="mySlides"><img src="https://drive.google.com/uc?id=1pMHp0niCwDt_ZaaJu_ePpVaFeb8Rsb0l" style="width:100%"></div>
-        <div class="mySlides"><img src="https://drive.google.com/uc?id=11DO-nU1lZTPOJ4KCcYVP4UzX3hknPIwN" style="width:100%"></div>
-        <div class="mySlides"><img src="https://drive.google.com/uc?id=1VlGkEjS_wizwsavMRFtsuXGs4M3KaPwH" style="width:100%"></div>
-        <div class="mySlides"><img src="https://drive.google.com/uc?id=19oShqYllaBb9W_Gwn7vVVb_Omobtq803" style="width:100%"></div>
+        <div class="mySlides"><img src="https://ibb.co/twf0mf1C" style="width:100%"></div>
+        <div class="mySlides"><img src="https://ibb.co/XZttSz15" style="width:100%"></div>
+        <div class="mySlides"><img src="https://ibb.co/67v23v32" style="width:100%"></div>
+        <div class="mySlides"><img src="https://ibb.co/C5Yx5jvy" style="width:100%"></div>
         <div class="slide-text">My favorite moments with you 💕</div>
     </div>
 
@@ -165,13 +166,13 @@ h2 {
 </div>
 
 <script>
-// Background Music (romantic & soft - auto plays)
+// Background Music (romantic soft music)
 var bgMusic = new Audio("https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3");
 bgMusic.loop = true;
 bgMusic.volume = 0.35;
 bgMusic.play().catch(() => {});
 
-// Floating cute decorations (Hello Kitty + bows)
+// Floating cute decorations
 function createDecorations() {
     const decors = ['🐱', '🎀', '💕', '🎀', '🐱', '💗'];
     setInterval(() => {
@@ -197,7 +198,7 @@ function checkName() {
     }
 }
 
-// YES / NO Logic
+// YES / NO (NO runs away)
 function yes() {
     document.getElementById("step2").style.display = "none";
     document.getElementById("step3").style.display = "block";
@@ -235,7 +236,7 @@ function back() {
     document.getElementById("step3").style.display = "block";
 }
 
-// Slideshow (changes every 3 seconds)
+// Slideshow Animation
 let slideIndex = 0;
 function startSlideshow() {
     let slides = document.getElementsByClassName("mySlides");
@@ -245,7 +246,7 @@ function startSlideshow() {
     slideIndex++;
     if (slideIndex > slides.length) slideIndex = 1;
     slides[slideIndex-1].style.display = "block";
-    setTimeout(startSlideshow, 3000);
+    setTimeout(startSlideshow, 2800); // Change every ~2.8 seconds
 }
 
 // Typing Love Message
@@ -267,7 +268,7 @@ function startTyping() {
     type();
 }
 
-// Hide all hidden sections initially
+// Hide hidden sections initially
 document.querySelectorAll('.hidden').forEach(el => el.style.display = "none");
 </script>
 

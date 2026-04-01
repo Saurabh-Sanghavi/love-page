@@ -65,38 +65,53 @@ h2 {
 
 /* Slideshow */
 .slideshow-container {
-    max-width: 320px;
-    margin: 20px auto;
+    max-width: 340px;
+    margin: 25px auto;
     position: relative;
-    border-radius: 15px;
-    overflow: hidden;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.2);
 }
 .mySlides {
     display: none;
     width: 100%;
-}
-.slide-text {
-    position: absolute;
-    bottom: 15px;
-    left: 50%;
-    transform: translateX(-50%);
-    background: rgba(255,105,180,0.8);
-    padding: 8px 18px;
     border-radius: 20px;
-    font-size: 15px;
+    box-shadow: 0 8px 25px rgba(0,0,0,0.3);
+    padding: 12px;
+    background: linear-gradient(145deg, #ffe4f0, #ffb6d9);
+    border: 6px solid #fff;
+}
+.mySlides img {
+    width: 100%;
+    border-radius: 15px;
+    display: block;
+}
+/* Text under the image */
+.slide-text {
+    margin: 18px auto 20px;
+    padding: 14px 22px;
+    background: rgba(255,255,255,0.25);
+    border-radius: 25px;
+    font-size: 17px;
     font-weight: bold;
+    min-height: 28px;
+    max-width: 300px;
+    color: #fff;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
 }
 
-/* Typing effect */
+/* Love Letter with Black Border Effect (like your "Summer" example) */
 #typing {
-    font-size: 20px;
-    min-height: 140px;
     margin: 25px auto;
-    max-width: 300px;
-    white-space: pre-wrap;
+    max-width: 310px;
+    padding: 20px 25px;
+    background: rgba(255,255,255,0.12);
+    border: 3px solid #000;
+    border-radius: 18px;
+    font-size: 17px;
+    line-height: 1.6;
     text-align: left;
-    padding: 0 15px;
+    color: #fff;
+    box-shadow: 0 6px 15px rgba(0,0,0,0.3);
+    -webkit-text-stroke: 1.5px #000;   /* Black outline */
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.6);
 }
 </style>
 </head>
@@ -126,22 +141,31 @@ h2 {
 <!-- STEP 3 -->
 <div id="step3" class="hidden fade">
     <h2>Select your gift 🎁</h2>
-    <button onclick="gift1()">GIFT 1 - Memories</button>
+    <button onclick="gift1()">GIFT 1 - YOU</button>
     <button onclick="gift2()">GIFT 2 - Song</button>
     <button onclick="gift3()">GIFT 3 - Love Letter</button>
 </div>
 
-<!-- GIFT 1 - Slideshow with your 4 real photos -->
+<!-- GIFT 1 - YOU -->
 <div id="gift1" class="hidden fade">
-    <h2>❤️ Our Beautiful Memories ❤️</h2>
+    <h2>YOU ❤️</h2>
     
     <div class="slideshow-container">
-        <div class="mySlides"><img src="https://i.ibb.co/RGnXvnJH/1775055547953.jpg" style="width:100%"></div>
-        <div class="mySlides"><img src="https://i.ibb.co/DDQQ57hM/1775055547977.jpg" style="width:100%"></div>
-        <div class="mySlides"><img src="https://i.ibb.co/v6sb7s7b/1775055548002.jpg" style="width:100%"></div>
-        <div class="mySlides"><img src="https://i.ibb.co/jvQ7vCGY/1775055548027.jpg" style="width:100%"></div>
-        <div class="slide-text">My favorite moments with you 💕</div>
+        <div class="mySlides">
+            <img src="https://8upload.com/image/c82c45aa1b0a0c54/1775055547953.jpg" style="width:100%">
+        </div>
+        <div class="mySlides">
+            <img src="https://8upload.com/image/4e689141049dc6fa/1775055547977.jpg" style="width:100%">
+        </div>
+        <div class="mySlides">
+            <img src="https://8upload.com/image/81c435c9329f5413/1775055548002.jpg" style="width:100%">
+        </div>
+        <div class="mySlides">
+            <img src="https://8upload.com/image/b71327cec59ff77b/1775055548027.jpg" style="width:100%">
+        </div>
     </div>
+
+    <div class="slide-text" id="slideTyping"></div>
 
     <p class="big-love">I Love You Forever 💖</p>
     <button onclick="back()">Back</button>
@@ -157,7 +181,7 @@ h2 {
     <button onclick="back()">Back</button>
 </div>
 
-<!-- GIFT 3 - Typing Message -->
+<!-- GIFT 3 - Love Letter -->
 <div id="gift3" class="hidden fade">
     <h2>💌 A Letter For My Baacha 💌</h2>
     <div id="typing"></div>
@@ -166,13 +190,12 @@ h2 {
 </div>
 
 <script>
-// Background Music (soft romantic)
+// Background Music, decorations, name check, yes/no, slideshow, etc. (unchanged)
 var bgMusic = new Audio("https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3");
 bgMusic.loop = true;
 bgMusic.volume = 0.35;
 bgMusic.play().catch(() => {});
 
-// Floating cute decorations
 function createDecorations() {
     const decors = ['🐱', '🎀', '💕', '🎀', '🐱', '💗'];
     setInterval(() => {
@@ -187,7 +210,6 @@ function createDecorations() {
 }
 createDecorations();
 
-// Name Check
 function checkName() {
     let name = document.getElementById("nameInput").value.toLowerCase().trim();
     if(name === "baacha") {
@@ -198,7 +220,6 @@ function checkName() {
     }
 }
 
-// YES / NO Logic
 function yes() {
     document.getElementById("step2").style.display = "none";
     document.getElementById("step3").style.display = "block";
@@ -211,7 +232,6 @@ noBtn.addEventListener("mouseover", () => {
     noBtn.style.top = Math.random() * 65 + "%";
 });
 
-// Gift Functions
 function gift1() {
     document.getElementById("step3").style.display = "none";
     document.getElementById("gift1").style.display = "block";
@@ -236,31 +256,74 @@ function back() {
     document.getElementById("step3").style.display = "block";
 }
 
-// Slideshow (auto change every 3 seconds)
+// Slideshow (unchanged)
+const slideMessages = [
+    "I GOT MY EYES ON YOU",      
+    "YOUR SMILE IS MY FAVOURITE", 
+    "I WILL ADORE YOU",          
+    "YOU ARE MY BAACHA"          
+];
+
 let slideIndex = 0;
+let typingTimeout = null;
+
+function typeSlideText(text, element) {
+    if (typingTimeout) clearTimeout(typingTimeout);
+    element.innerHTML = "";
+    let i = 0;
+    const speed = 40;
+    function type() {
+        if (i < text.length) {
+            element.innerHTML += text.charAt(i);
+            i++;
+            typingTimeout = setTimeout(type, speed);
+        }
+    }
+    type();
+}
+
 function startSlideshow() {
     let slides = document.getElementsByClassName("mySlides");
-    for (let i = 0; i < slides.length; i++) {
-        slides[i].style.display = "none";
-    }
+    let textElement = document.getElementById("slideTyping");
+    for (let i = 0; i < slides.length; i++) slides[i].style.display = "none";
     slideIndex++;
     if (slideIndex > slides.length) slideIndex = 1;
     slides[slideIndex-1].style.display = "block";
-    setTimeout(startSlideshow, 3000);
+    typeSlideText(slideMessages[slideIndex-1], textElement);
+    setTimeout(startSlideshow, 5000);
 }
 
-// Typing Love Message
-const message = `My sweet baacha,\n\nEvery moment with you is so special.\nYou fill my days with happiness and my heart with love.\nI can't imagine my life without you.\n\nThank you for being mine 💖`;
+// Final Love Letter
+const loveLetter = `My dearest baacha,
+
+From the moment you entered my life, everything became brighter and more beautiful.
+You are not just my love, you are my peace, my happiness, and my favorite person in this entire world.
+
+Every time I call you "baacha", my heart fills with warmth.
+Your smile melts me completely, your voice makes my day better, and your presence makes me feel like the luckiest person alive.
+
+I promise to always cherish you, support you, protect you, and love you with all my heart.
+Even on tough days, I will choose you again and again.
+You make ordinary moments feel magical.
+
+Thank you for being my baacha and my forever love.
+I can't wait to create thousands of more beautiful memories with you.
+
+I love you more than words can ever express... today, tomorrow, and always.
+
+"TU FAKT MAJHI AHES"
+
+Forever yours,
+HUSBAND ❤️`;
 
 function startTyping() {
     const typingElement = document.getElementById("typing");
     typingElement.innerHTML = "";
     let i = 0;
     const speed = 45;
-
     function type() {
-        if (i < message.length) {
-            typingElement.innerHTML += message.charAt(i) === "\n" ? "<br>" : message.charAt(i);
+        if (i < loveLetter.length) {
+            typingElement.innerHTML += loveLetter.charAt(i) === "\n" ? "<br>" : loveLetter.charAt(i);
             i++;
             setTimeout(type, speed);
         }
@@ -268,7 +331,7 @@ function startTyping() {
     type();
 }
 
-// Hide hidden sections initially
+// Hide hidden sections
 document.querySelectorAll('.hidden').forEach(el => el.style.display = "none");
 </script>
 

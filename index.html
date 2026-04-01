@@ -16,8 +16,8 @@ body {
 /* Cute floating decorations */
 .decoration {
     position: fixed;
-    font-size: 20px;
-    opacity: 0.6;
+    font-size: 22px;
+    opacity: 0.7;
     animation: floatUp 8s linear infinite;
     z-index: -1;
     pointer-events: none;
@@ -55,59 +55,64 @@ h2 {
 
 /* Big bold love text */
 .big-love {
-    font-size: 32px;
+    font-size: 34px;
     font-weight: bold;
     font-family: 'Georgia', serif;
-    text-shadow: 2px 2px 8px rgba(0,0,0,0.3);
-    margin: 20px 0;
+    text-shadow: 2px 2px 10px rgba(0,0,0,0.4);
+    margin: 25px 0;
+    color: #fff;
 }
 
 /* Slideshow */
 .slideshow-container {
-    max-width: 300px;
+    max-width: 320px;
     margin: 20px auto;
     position: relative;
+    border-radius: 15px;
+    overflow: hidden;
 }
 .mySlides {
     display: none;
     width: 100%;
-    border-radius: 15px;
 }
 .slide-text {
     position: absolute;
-    bottom: 10px;
+    bottom: 15px;
     left: 50%;
     transform: translateX(-50%);
-    background: rgba(0,0,0,0.5);
-    padding: 8px 15px;
+    background: rgba(255,105,180,0.7);
+    padding: 8px 18px;
     border-radius: 20px;
-    font-size: 14px;
+    font-size: 15px;
+    font-weight: bold;
 }
 
 /* Typing effect */
 #typing {
     font-size: 20px;
-    min-height: 120px;
-    margin: 20px auto;
-    max-width: 280px;
+    min-height: 140px;
+    margin: 25px auto;
+    max-width: 300px;
     white-space: pre-wrap;
+    text-align: left;
+    padding: 0 15px;
 }
 </style>
 </head>
 
 <body>
 
-<!-- Floating cute decorations -->
+<!-- Floating Hello Kitty & Bows -->
 <div id="decorations"></div>
 
 <!-- STEP 1 -->
 <div id="step1" class="fade">
     <h2>Put your name 💌</h2>
     <p>Hint: The name I call you daily ❤️</p>
-    <input type="text" id="nameInput" style="padding:10px; font-size:16px;">
+    <input type="text" id="nameInput" style="padding:10px; font-size:16px; width:200px;">
     <br><br>
     <button onclick="checkName()">Next</button>
-    <p id="error" style="color:yellow;"></p>
+    <p id="error" style="color:yellow; font-weight:bold;"></p>
 </div>
 
 <!-- STEP 2 -->
@@ -120,20 +125,21 @@ h2 {
 <!-- STEP 3 -->
 <div id="step3" class="hidden fade">
     <h2>Select your gift 🎁</h2>
-    <button onclick="gift1()">GIFT 1</button>
-    <button onclick="gift2()">GIFT 2</button>
-    <button onclick="gift3()">GIFT 3</button>
+    <button onclick="gift1()">GIFT 1 - Memories</button>
+    <button onclick="gift2()">GIFT 2 - Song</button>
+    <button onclick="gift3()">GIFT 3 - Love Letter</button>
 </div>
 
-<!-- GIFT 1 - Slideshow -->
+<!-- GIFT 1 - Slideshow with your 4 photos -->
 <div id="gift1" class="hidden fade">
-    <h2>❤️ Our Memories ❤️</h2>
+    <h2>❤️ Our Beautiful Memories ❤️</h2>
     
     <div class="slideshow-container">
-        <div class="mySlides"><img src="https://via.placeholder.com/280x200/ffc0cb/ffffff?text=Photo+1" style="width:100%"></div>
-        <div class="mySlides"><img src="https://via.placeholder.com/280x200/ffc0cb/ffffff?text=Photo+2" style="width:100%"></div>
-        <div class="mySlides"><img src="https://via.placeholder.com/280x200/ffc0cb/ffffff?text=Photo+3" style="width:100%"></div>
-        <div class="slide-text">Forever with you 💕</div>
+        <div class="mySlides"><img src="https://drive.google.com/uc?id=1pMHp0niCwDt_ZaaJu_ePpVaFeb8Rsb0l" style="width:100%"></div>
+        <div class="mySlides"><img src="https://drive.google.com/uc?id=11DO-nU1lZTPOJ4KCcYVP4UzX3hknPIwN" style="width:100%"></div>
+        <div class="mySlides"><img src="https://drive.google.com/uc?id=1VlGkEjS_wizwsavMRFtsuXGs4M3KaPwH" style="width:100%"></div>
+        <div class="mySlides"><img src="https://drive.google.com/uc?id=19oShqYllaBb9W_Gwn7vVVb_Omobtq803" style="width:100%"></div>
+        <div class="slide-text">My favorite moments with you 💕</div>
     </div>
 
     <p class="big-love">I Love You Forever 💖</p>
@@ -142,57 +148,56 @@ h2 {
 
 <!-- GIFT 2 - Song -->
 <div id="gift2" class="hidden fade">
-    <h2>🎵 Special Song 🎵</h2>
+    <h2>🎵 Special Song for You 🎵</h2>
     <iframe width="300" height="200" 
     src="https://www.youtube.com/embed/2Vv-BfVoq4g" 
     allowfullscreen></iframe>
-    <br>
+    <br><br>
     <button onclick="back()">Back</button>
 </div>
 
 <!-- GIFT 3 - Typing Message -->
 <div id="gift3" class="hidden fade">
-    <h2>💌 A Letter For You 💌</h2>
+    <h2>💌 A Letter For My Baacha 💌</h2>
     <div id="typing"></div>
     <p class="big-love">I Love You Forever 💖</p>
     <button onclick="back()">Back</button>
 </div>
 
 <script>
-// === BACKGROUND MUSIC (Auto play - soft romantic) ===
-var bgMusic = new Audio("https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3"); // Change this link if you want
+// Background Music (romantic & soft - auto plays)
+var bgMusic = new Audio("https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3");
 bgMusic.loop = true;
-bgMusic.volume = 0.3;
-bgMusic.play().catch(() => {}); // Autoplay may need user interaction on some browsers
+bgMusic.volume = 0.35;
+bgMusic.play().catch(() => {});
 
-// === Floating Hello Kitty & Bows ===
+// Floating cute decorations (Hello Kitty + bows)
 function createDecorations() {
-    const decors = ['🎀', '🐱', '🎀', '💕', '🐱', '🎀'];
+    const decors = ['🐱', '🎀', '💕', '🎀', '🐱', '💗'];
     setInterval(() => {
         let decor = document.createElement("div");
         decor.className = "decoration";
         decor.innerHTML = decors[Math.floor(Math.random()*decors.length)];
         decor.style.left = Math.random() * 100 + "vw";
-        decor.style.animationDuration = (Math.random() * 6 + 7) + "s";
+        decor.style.animationDuration = (Math.random() * 6 + 8) + "s";
         document.getElementById("decorations").appendChild(decor);
-        
-        setTimeout(() => decor.remove(), 15000);
-    }, 400);
+        setTimeout(() => decor.remove(), 16000);
+    }, 350);
 }
 createDecorations();
 
-// === Name Check ===
+// Name Check
 function checkName() {
     let name = document.getElementById("nameInput").value.toLowerCase().trim();
     if(name === "baacha") {
         document.getElementById("step1").style.display = "none";
         document.getElementById("step2").style.display = "block";
     } else {
-        document.getElementById("error").innerText = "Not Accepted 😢 Try again 💕";
+        document.getElementById("error").innerText = "Not Accepted 😢 Please try again 💕";
     }
 }
 
-// === YES / NO (NO runs away) ===
+// YES / NO Logic
 function yes() {
     document.getElementById("step2").style.display = "none";
     document.getElementById("step3").style.display = "block";
@@ -201,11 +206,11 @@ function yes() {
 const noBtn = document.getElementById("noBtn");
 noBtn.addEventListener("mouseover", () => {
     noBtn.style.position = "absolute";
-    noBtn.style.left = Math.random() * 80 + "%";
-    noBtn.style.top = Math.random() * 70 + "%";
+    noBtn.style.left = Math.random() * 75 + "%";
+    noBtn.style.top = Math.random() * 65 + "%";
 });
 
-// === Gifts ===
+// Gift Functions
 function gift1() {
     document.getElementById("step3").style.display = "none";
     document.getElementById("gift1").style.display = "block";
@@ -230,8 +235,41 @@ function back() {
     document.getElementById("step3").style.display = "block";
 }
 
-// === Slideshow Animation ===
+// Slideshow (changes every 3 seconds)
 let slideIndex = 0;
 function startSlideshow() {
     let slides = document.getElementsByClassName("mySlides");
-    for (
+    for (let i = 0; i < slides.length; i++) {
+        slides[i].style.display = "none";
+    }
+    slideIndex++;
+    if (slideIndex > slides.length) slideIndex = 1;
+    slides[slideIndex-1].style.display = "block";
+    setTimeout(startSlideshow, 3000);
+}
+
+// Typing Love Message
+const message = `My sweet baacha,\n\nEvery moment with you is so special.\nYou fill my days with happiness and my heart with love.\nI can't imagine my life without you.\n\nThank you for being mine 💖`;
+
+function startTyping() {
+    const typingElement = document.getElementById("typing");
+    typingElement.innerHTML = "";
+    let i = 0;
+    const speed = 45;
+
+    function type() {
+        if (i < message.length) {
+            typingElement.innerHTML += message.charAt(i) === "\n" ? "<br>" : message.charAt(i);
+            i++;
+            setTimeout(type, speed);
+        }
+    }
+    type();
+}
+
+// Hide all hidden sections initially
+document.querySelectorAll('.hidden').forEach(el => el.style.display = "none");
+</script>
+
+</body>
+</html>

@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>For You ❤️</title>
+
+<style>
+body {
+    margin: 0;
+    text-align: center;
+    font-family: Arial;
+    background: linear-gradient(to right, #ff758c, #ff7eb3);
+    color: white;
+}
+
+/* Smooth animation */
+.fade {
+    animation: fadeIn 1s;
+}
+
+@keyframes fadeIn {
+    from {opacity: 0;}
+    to {opacity: 1;}
+}
+
+button {
+    padding: 12px 25px;
+    margin: 10px;
+    border: none;
+    background: white;
+    color: black;
+    border-radius: 20px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+/* Hearts animation */
+.heart {
+    position: fixed;
+    bottom: 0;
+    color: red;
+    animation: floatUp 5s linear infinite;
+}
+
+@keyframes floatUp {
+    0% {transform: translateY(0);}
+    100% {transform: translateY(-800px);}
+}
+
+.hidden {
+    display: none;
+}
+</style>
+</head>
+
+<body>
+
+<!-- STEP 1 -->
+<div id="step1" class="fade">
+<h2>Put your name 💌</h2>
+<p>Hint: The name I call you daily ❤️</p>
+<input type="text" id="nameInput">
+<br><br>
+<button onclick="checkName()">Next</button>
+<p id="error"></p>
+</div>
+
+<!-- STEP 2 -->
+<div id="step2" class="hidden fade">
+<h2>Do you love me? ❤️</h2>
+<button onclick="yes()">YES</button>
+<button onclick="no()">NO</button>
+</div>
+
+<!-- STEP 3 -->
+<div id="step3" class="hidden fade">
+<h2>Select your gift 🎁</h2>
+<button onclick="gift1()">GIFT 1</button>
+<button onclick="gift2()">GIFT 2</button>
+</div>
+
+<!-- GIFT 1 -->
+<div id="gift1" class="hidden fade">
+<h2>❤️ Our Memories ❤️</h2>
+
+<img src="https://via.placeholder.com/200"><br><br>
+<img src="https://via.placeholder.com/200"><br>
+
+<p>I Love You Forever 💖</p>
+
+<button onclick="back()">Back</button>
+</div>
+
+<!-- GIFT 2 -->
+<div id="gift2" class="hidden fade">
+<h2>🎵 Special Song 🎵</h2>
+
+<iframe width="300" height="200"
+src="https://www.youtube.com/embed/2Vv-BfVoq4g"
+allowfullscreen></iframe>
+
+<br>
+<button onclick="back()">Back</button>
+</div>
+
+<script>
+
+// NAME CHECK
+function checkName() {
+let name = document.getElementById("nameInput").value.toLowerCase();
+
+if(name === "baacha") {
+document.getElementById("step1").style.display = "none";
+document.getElementById("step2").style.display = "block";
+} else {
+document.getElementById("error").innerText = "Not Accepted 😢";
+}
+}
+
+// YES / NO
+function yes() {
+document.getElementById("step2").style.display = "none";
+document.getElementById("step3").style.display = "block";
+}
+
+function no() {
+alert("NO is not an option 😏❤️");
+}
+
+// GIFTS
+function gift1() {
+document.getElementById("step3").style.display = "none";
+document.getElementById("gift1").style.display = "block";
+startHearts();
+}
+
+function gift2() {
+document.getElementById("step3").style.display = "none";
+document.getElementById("gift2").style.display = "block";
+}
+
+// BACK
+function back() {
+document.getElementById("gift1").style.display = "none";
+document.getElementById("gift2").style.display = "none";
+document.getElementById("step3").style.display = "block";
+}
+
+// HEART ANIMATION
+function startHearts() {
+setInterval(() => {
+let heart = document.createElement("div");
+heart.innerHTML = "❤️";
+heart.className = "heart";
+heart.style.left = Math.random() * 100 + "vw";
+document.body.appendChild(heart);
+
+setTimeout(() => heart.remove(), 5000);
+}, 300);
+}
+
+</script>
+
+</body>
+</html>
